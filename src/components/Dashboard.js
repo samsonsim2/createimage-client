@@ -46,7 +46,7 @@ export const Dashboard = () => {
   const fetchImages = async () => {
     const {
       data: { Images },
-    } = await axios.get(`/api/v1/images`)
+    } = await axios.get(`https://createimages-server.vercel.app/api/v1/images`)
     setGallery(Images)
   }
 
