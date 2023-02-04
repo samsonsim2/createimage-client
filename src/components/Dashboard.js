@@ -32,7 +32,7 @@ export const Dashboard = () => {
           description: description,
           image: image,
         }
-
+        console.log('test')
         axios.post(
           `https://createimages-server.vercel.app/api/v1/images`,
           uploadedImage
