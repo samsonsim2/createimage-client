@@ -33,7 +33,10 @@ export const Dashboard = () => {
           image: image,
         }
 
-        axios.post(`/api/v1/images`, uploadedImage)
+        axios.post(
+          `https://createimages-server.vercel.app/api/v1/images`,
+          uploadedImage
+        )
         reset()
 
         fetchImages()
