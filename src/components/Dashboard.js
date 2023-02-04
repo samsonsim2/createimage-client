@@ -90,11 +90,15 @@ export const Dashboard = () => {
               data: {
                 image: { src },
               },
-            } = await axios.post(`/api/v1/images/uploads`, formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
-            })
+            } = await axios.post(
+              `https://createimages-server.vercel.app/api/v1/images/uploads`,
+              formData,
+              {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                },
+              }
+            )
 
             // problem is that setImage is asynchronous. So axios.post is invoked before setImage is set, therefore upload a null value
 
@@ -125,11 +129,15 @@ export const Dashboard = () => {
         data: {
           image: { src },
         },
-      } = await axios.post(`/api/v1/images/uploads`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+      } = await axios.post(
+        `https://createimages-server.vercel.app/api/v1/images/uploads`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      )
       setImage(src)
     } catch (error) {
       image = null
