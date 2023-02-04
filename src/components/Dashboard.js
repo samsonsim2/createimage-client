@@ -186,15 +186,16 @@ export const Dashboard = () => {
       <div>
         <h1>Gallery</h1>
 
-        {gallery.map((item) => {
-          return (
-            <div key={item._id}>
-              <h1>{`${item.name}`}</h1>
-              <p>{`${item.description}`}</p>
-              <img src={`${item.image}`}></img>
-            </div>
-          )
-        })}
+        {gallery &&
+          gallery.map((item) => {
+            return (
+              <div key={item._id}>
+                <h1>{`${item.name}`}</h1>
+                <p>{`${item.description}`}</p>
+                <img src={`${item.image}`}></img>
+              </div>
+            )
+          })}
       </div>
     </>
   )
