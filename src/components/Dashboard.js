@@ -27,17 +27,17 @@ export const Dashboard = () => {
       return
     } else
       try {
-        const uploadedImage = {
-          name: name,
-          description: description,
-          image: image,
-        }
-        console.log('test')
-        axios.post(
-          `https://createimages-server.vercel.app/api/v1/images`,
-          uploadedImage
-        )
-        reset()
+        // const uploadedImage = {
+        //   name: name,
+        //   description: description,
+        //   image: image,
+        // }
+
+        // axios.post(
+        //   `https://createimages-server.vercel.app/api/v1/images`,
+        //   uploadedImage
+        // )
+        // reset()
 
         fetchImages()
       } catch (error) {
@@ -54,7 +54,7 @@ export const Dashboard = () => {
   }
 
   //DownloadImage Function
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     // -- function that converts base64 to image file
     const dataURLtoFile = (dataurl, filename) => {
       const arr = dataurl.split(',')
@@ -79,14 +79,15 @@ export const Dashboard = () => {
       // -- Upload Function ( Converts base64 image to image file before uploading to cloudinary)
 
       const uploadToCloud = async () => {
-        const file = dataURLtoFile(base64image)
-        const formData = new FormData()
+        let file = dataURLtoFile(base64image)
+        let formData = new FormData()
         formData.append('image', file, file.name)
+
         if (name === '' || description === '') {
           console.log('please give a name and desc')
         } else
           try {
-            const {
+            let {
               data: {
                 image: { src },
               },
@@ -104,7 +105,6 @@ export const Dashboard = () => {
 
             setImage(src)
           } catch (error) {
-            image = null
             console.log(error)
           }
       }
@@ -140,7 +140,6 @@ export const Dashboard = () => {
       )
       setImage(src)
     } catch (error) {
-      image = null
       console.log(error)
     }
   }
